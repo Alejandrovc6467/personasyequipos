@@ -1,0 +1,7 @@
+
+*{
+    box-sizing: border-box;
+    /*este box sizing  lo puse en un componente en el componente campo texto 
+    podria ir en cada uno pero es mejor ponerlo aqui de esta forma esta para todos los componentes 
+    y  bueno como siempre es para que no se desborden los elementos*/
+}
