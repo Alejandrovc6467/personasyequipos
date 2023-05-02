@@ -1,0 +1,28 @@
+
+.campo_texto{
+    margin: 24px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.campo_texto label{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    display: block;/*Paso al siguiente reglon por decirlo asi, es para que me quede el input abajo, pude hacer esto con un dysplay flex y sus respectivas settings, pero esto es mas sencillo*/
+    margin-bottom: 8px;
+}
+.campo_texto input{
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+    border: none;
+    padding: 15px 20px;
+    outline-color: #6278f7;
+    font-size: 14px;
+    
+    /*➡️➡️ Super importante este  box-sizing: border-box;
+    yo lo colocaba en el body de mi css principal
+    aqui en react yo lo tengo que utilizar donde lo necesite
+    esto por un tema de que cada componente tiene un css especifico*/
+    box-sizing: border-box;
+}
