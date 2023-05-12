@@ -16,7 +16,7 @@ function App() {
   //hoooks mios 🙃 
   //const [nombreVariable, funcionActualizar] = useState(valorInicial)
   const [formulario, setFormulario] = useState(false)
-  const [colaboradores, setColaboradores] = useState([])
+  const [colaboradores, setColaboradores] = useState([{equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"}])//agregue uno quemado
   // este array de colaboradores se lo envio a mi componente Equipos
 
 
@@ -93,7 +93,7 @@ function App() {
   );
 }
 
-//https://github.com/Alejandrovc6467.png
+
 export default App;
 
 /**
