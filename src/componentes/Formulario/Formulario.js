@@ -5,7 +5,7 @@ import ListaOpciones from "../ListaOpciones/ListaOpciones"
 import Boton from "../Boton/Boton"
 import { useState } from "react"
 
-const Formulario = () => {
+const Formulario = (props) => {
 
     //estas son mis variables que utilizo para el formulario, las seteo dentro de los componentes, por eso las envio como props como "valor" y como "setValor"
     //luego las envio como un objecto para crear las tarjetas en el equipo elegido
@@ -21,8 +21,9 @@ const Formulario = () => {
         
         //objecto
         let datosAEnviar = {nombre, puesto, foto, equipo}
-        console.log("Datos a enviar", datosAEnviar)
-    
+        props.registrarColaborador(datosAEnviar)//este metodo que estoy pasando por props lo cree en App.js este recibe un parametro que es el colaborador, lo que le estoy enviando por aqui, y de esta manera le envio la informacion que recolecte en mi
+        //componente formulario a mi componente App.js, es practicamente lo que hago con los campos de texto para traer la informacion de cada uno de ellos aqui
+        
     }
     
     //este onSubmit del form es como el onClick pero este es cuando se presiona el boton especifico del form
@@ -32,7 +33,7 @@ const Formulario = () => {
             <CampoTexto titulo="Nombre" placeholder="Ingrese nombre" required={false} valor={nombre} setValor={setNombre} />
             <CampoTexto titulo="Puesto" placeholder="Ingrese puesto" required   valor={puesto} setValor={setPuesto}/>
             <CampoTexto titulo="Foto" placeholder="Ingresar enlace de foto"  valor={foto} setValor={setFoto}/>
-            <ListaOpciones   valor={equipo} setValor={setEquipo} />
+            <ListaOpciones   valor={equipo} setValor={setEquipo} equipos={props.equipos} />
             <Boton texto="Crear"/>
         </form>
     </section>

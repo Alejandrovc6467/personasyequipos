@@ -2,17 +2,32 @@
 
 .equipo{
     width: 100%;
-    background-color: red ;
     padding: 32px;
     text-align: center;
     font-size: 32px;
+
+
     
 }
 
 .equipo h3{
     font-weight: 400;
-    border-bottom: 4px solid #57c278;
+    border-bottom: 4px solid;
     display: inline-block;/*EStee es para que solo se muestre la linea a lo largo del texto y no se salga*/
     padding-bottom: 8px;
 
 }   
+
+
+.colaboradores{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+/**/
+@media all and (max-width:640px){
+    .equipo h3{
+        font-size: medium;
+    }   
+}

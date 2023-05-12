@@ -19,3 +19,13 @@
     padding: 0;
     
 }
+
+
+/**/
+@media all and (max-width:640px){
+
+    .formulario form{
+        max-width: 97%;
+        padding: 8px 20px;
+    }
+}
