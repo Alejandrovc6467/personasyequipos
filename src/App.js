@@ -8,7 +8,7 @@ import MiOrganizacion from './componentes/MiOrganizacion/MiOrganizacion';
 import { useState } from 'react';//super importante para realizar el mostrar ocualtar del formulario
 import Equipo from './componentes/Equipo/Equipo';
 import Footer from './componentes/Footer/Footer';
-
+import {v4 as uuid} from "uuid"
 
 
 function App() {
@@ -18,47 +18,63 @@ function App() {
   const [formulario, setFormulario] = useState(false)
   const [colaboradores, setColaboradores] = useState([
 
-    {equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
-    {equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
-    {equipo:"Programación", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
-    {equipo:"Movil", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
-    {equipo:"UX y Diseño", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
-    {equipo:"Devops", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"}
+    {id: uuid(), equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
+    {id: uuid(), equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
+    {id: uuid(), equipo:"Programación", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
+    {id: uuid(), equipo:"Movil", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
+    {id: uuid(), equipo:"UX y Diseño", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
+    {id: uuid(), equipo:"Devops", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"}
   ])//agregue varios quemados
   // este array de colaboradores se lo envio a mi componente Equipos
+
+  //el id:uuid(), es el metodo de la libreria que le uso para generar identificadores unicos, antes de usar eso utilizaba el nombre como identificador pero podia haber dos equipos con el mismo nombre
   const [equipos, setEquipos] = useState([
 
-    {titulo:"Programación",
+    {
+      id:uuid(),
+      titulo:"Programación",
       colorPrimario:"#57c278",
       colorSecundario:"#d9f7e9"
     },
 
-    {titulo:"Front End",
+    {
+      id:uuid(),
+      titulo:"Front End",
       colorPrimario:"#82CFFA",
       colorSecundario:"#E8F8FF"
     },
 
-    {titulo:"Data Science",
+    {
+      id:uuid(),
+      titulo:"Data Science",
       colorPrimario:"#A6D157",
       colorSecundario:"#F0F8E2"
     },
     
-    {titulo:"Devops",
+    {
+      id:uuid(),
+      titulo:"Devops",
       colorPrimario:"#E06B69",
       colorSecundario:"#FDE7E8"
     },
 
-    {titulo:"UX y Diseño",
+    {
+      id:uuid(),
+      titulo:"UX y Diseño",
       colorPrimario:"#DB6EBF",
       colorSecundario:"#FAE9F5"
     },
 
-    {titulo:"Movil",
+    {
+      id:uuid(),
+      titulo:"Movil",
       colorPrimario:"#FFBA05",
       colorSecundario:"#FFF5D9"
     },
 
-    {titulo:"Innovación y Gestión",
+    {
+      id:uuid(),
+      titulo:"Innovación y Gestión",
       colorPrimario:"#FF8A29",
       colorSecundario:"#FFEEDF"
     }
@@ -75,29 +91,27 @@ function App() {
 
   const registrarColaborador = (colaborador) =>{
     //este metodo lo paso por props a mi formulario y el lo llama y le pasa todos los datos a mi por el parametro que recibe este metodo, entonces aqui tengo toda la informacion e=necesaria para crear mi targeta de colaborador
-    console.log("NUevo colaborador", colaborador)
+    console.log("Nuevo colaborador", colaborador)
 
     //el Spread operator lo que hace es crear una copia del array original y luego agrega el nuevo elemento en este caso el nuevo colaborador y su sintaxis es asi "setColaboradores([...nombreVariable, nuevoElemento])"
     setColaboradores([...colaboradores,colaborador])
   }
 
-  const eliminarColaborador = () =>{
+  const eliminarColaborador = (id) =>{
 
-    console.log("Eliminar colaborador")
-    //lo que pienso que va a realizar es hacer llegar esta funcion hasta los colaboradores
-    // y que esta reciba un parametro en cual va a ser el indentificador y con eso eliminar el que
-    // coincida con el mi array de colaboradoes 
-    // tambien tener en cuenta que no tengo que refrezcar la pagina debo lo no refrez
+    //aqui lo que hago es crear un nuevo array pero solo con los que son diferentes al que qioero eliminar, ose todos menos el que quiero borrar y luego se lo setteo a mi array con el metodo set
+    const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id != id)
+    setColaboradores(nuevosColaboradores)
   }
 
-  const actualizarColorEquipo = (color, titulo) => {
+  const actualizarColorEquipo = (color, id) => {
     //esta funcion la paso por props hasta el componente equipo y la llamo ahi y le paso el color y el equipo y asi modifico los valores del array
 
-    console.log("Actualizar: ", color, titulo)
+    console.log("Actualizar: ", color, id)
 
     //recorro el array equipos y por cada equipo pregunto si el titulo es igual y entonces lo cambio
     const equiposActualizados = equipos.map((equipo) =>{
-      if(equipo.titulo === titulo){
+      if(equipo.id === id){
         equipo.colorPrimario = color
       }
       return equipo//este es suer imnportante recordar que esto es react, este return lo que hace es retornar el equipo haya sido modificado si entra por if o no
@@ -121,7 +135,7 @@ function App() {
       <Header/>
       {formulario ?  <Formulario equipos={equipos.map((equipo)=> equipo.titulo)}  registrarColaborador={registrarColaborador}/> : <></>}
       <MiOrganizacion switchFormulario={switchFormulario}/>
-      {equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} eliminarColaborador={eliminarColaborador} actualizarColorEquipo={actualizarColorEquipo} />)}  {/**aqui creo todos los componentes en base al array de equipos que cree arriba y lo rrecorro con un map y ademas le paso el array de colaboradores pero con un filtro donde solo se pasen los pertenecientes a cada equipo gracias al array de equipos.titulo el mismo que utilizo para las key de los equipos  */}
+      {equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} eliminarColaborador={eliminarColaborador} actualizarColorEquipo={actualizarColorEquipo} />)}  {/**aqui creo todos los componentes en base al array de equipos que cree arriba y lo rrecorro con un map y ademas le paso el array de colaboradores pero con un filtro donde solo se pasen los pertenecientes a cada equipo gracias al array de equipos.titulo, el key utilize el id unico que genero con la libreria que improte(mentira uso el titulo) pude haberlo hecho poniendole un index mas como parametro al map  */}
       <Footer/>
     </div>
   );

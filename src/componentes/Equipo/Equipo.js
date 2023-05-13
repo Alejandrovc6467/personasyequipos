@@ -5,7 +5,7 @@ import hexToRgba from 'hex-to-rgba';
 
 const Equipo = ( props) => {
 
-    const {colorPrimario, colorSecundario, titulo} = props.datos
+    const {colorPrimario, colorSecundario, titulo, id} = props.datos
     const {colaboradores} = props // es lo mismo que hacer props.colaboradores y asi no tengo que estar escribiendo props solo colaboradores
 
     //puedo hacer esto para la propiedad del background y pasarlo solo ob
@@ -13,7 +13,7 @@ const Equipo = ( props) => {
 
     //para manejar el envio de los datos del cambio del color
     const manejarEnvio = (e) => {
-        props.actualizarColorEquipo(e.target.value, titulo)
+        props.actualizarColorEquipo(e.target.value, id)
         //pude haberlo hecho en una solo linea una arrow function en la linea del return como lo hago en esta linea comnentada de aqui abajo, pero me parece mejor asi, mas estructurado y independiente
         // <input type="color" className="input_color"  value={colorSecundario} onChange={(e) => {props.actualizarColorEquipo(e.target.value, titulo) }}/>{/*como yo le estoy agregamdo un valor al value de este input el navegador me tira un error y para solucionarlo lo que me dice es que tengo que estar controlando yo los cambios de este value con algun metodo, entonces por eso pongo ese atributo onChange para controlarlo yo y quitarle la responsabilidad al navegador */}
     }
