@@ -5,7 +5,7 @@
     padding: 32px;
     text-align: center;
     font-size: 32px;
-
+    position: relative;/*puse este relative solo porque necesito acomodar en inuput del color en un lugar especifico y claro al input color le pongo absolute*/
 
     
 }
@@ -24,6 +24,21 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+.input_color{
+
+    /*gracias al absolute puedo posicionar al input donde yo quiera con los top y rigth sin que los demas componentes del div y de toda la pagina en general  se muevan
+    es como si el absolute hiciera independiente al input de los demas componetes, tiene liberta de movimiento por todo el espcio*/
+    position: absolute;
+    top: 20px;/*20px de la pared de arriba del div padre*/
+    right: 40px;/*este es el espacio entre la pared derecha y el componente*/
+    /*Recordar que esto solo funciona si el contenedor padre(padre) dondde se encuentra el componente hijo (input) tiene un (  position: relative;)*/
+
+
+    /*estilos mas esteticos*/
+    
+}
+
 
 /**/
 @media all and (max-width:640px){

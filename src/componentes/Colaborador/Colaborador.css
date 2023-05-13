@@ -1,7 +1,7 @@
 .colaborador {
     width: 280px;
     margin-bottom: 24px;
-    position: relative;
+    position: relative;/**/
 }
 
 .colaborador .encabezado {
@@ -42,7 +42,16 @@
 }
 
 .eliminar{
-    position: absolute;
+    position: absolute;/**/
     right: -15px;
     top: -15px;
+    color: rgb(127, 127, 127);
 }
+
+
+/*
+    En resumen, la principal diferencia entre la posición relativa y la posición absoluta es que la posición
+    relativa ajusta la ubicación del elemento en relación con su posición original dentro del flujo del documento,
+     mientras que la posición absoluta posiciona el elemento en una ubicación específica en la página sin considerar
+   el flujo del documento.
+*/
