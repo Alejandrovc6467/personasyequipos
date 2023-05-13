@@ -28,7 +28,7 @@ const ListaOpciones = (props) => {
             {/**el map recibe dos parametros el index y un nombre en este caso equipo que se utiliza para realizar los llamdos como en un foreach de java
              * el atributo key(indispensable) esta dentro de la etiqueta option es una regla de java, la cual necesita diferenciar un componente por un identificador que este caso se lo damos con el pos del index del array
              */}
-             <option value="" disabled selected  >Seleccionar equipo</option>
+             <option value="" >Seleccionar equipo</option>
             {props.equipos.map((equipo, index) => <option key={index} value={equipo}>{equipo}</option>)}
 
             {/*Entonces lo que estoy haciendo es retornar la cantidad del tamanio del array en etiquetas opcion */}
