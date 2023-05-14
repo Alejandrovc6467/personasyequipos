@@ -11,10 +11,11 @@ const ListaOpciones = (props) => {
         props.setValor(e.target.value)
     }
 
+
     return <div className="lista_opciones">
         <label>Equipos</label>          
         <select onChange={manejarCambio} required>
-            {/* // normalmente esto lo hubiera realizado de esta forma pero tengo que tomar en cuenta que estos datos podrian estar en una base de datos y yo tendria que perdirlos
+            {/* // normalmente esto lo hubiera realizado de esta forma, pero tengo que tomar en cuenta que estos datos podrian estar en una base de datos y yo tendria que perdirlos
             //por eso lo voy a realizar de con un map, tambien podria recorrerlo con un foreach o un for simple, pero segun los profes un map es lo mas usado
             <option>Programacion</option>
             <option>Front End</option>
