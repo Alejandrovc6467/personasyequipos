@@ -1,6 +1,6 @@
 
 import "./Colaborador.css"
-import {AiFillCloseCircle} from "react-icons/ai"
+import {AiFillCloseCircle, AiOutlineHeart, AiFillHeart} from "react-icons/ai"
 
 
 
@@ -18,6 +18,11 @@ const Colaborador = (props) =>{
         //pude no crear esta funcion y no llamarla y solo hacerlo es la misma linea asi ( <AiFillCloseCircle className="eliminar" onClick={() => props.eliminarColaborador(id)} />)
     } 
 
+    const manejarFavorito = () => {
+    
+        props.actualizarFavorito(id)
+    }
+
 
     return <div className="colaborador">
         <AiFillCloseCircle className="eliminar" onClick={manejarAccion} />{/* pude hacerlo asi directamenete      <AiFillCloseCircle className="eliminar" onClick={() => props.eliminarColaborador(id)} />     */}
@@ -28,6 +33,7 @@ const Colaborador = (props) =>{
         <div className="info">
             <h4>{props.datos.nombre}</h4>
             <h5>{props.datos.puesto}</h5>
+            {props.datos.favorito ?  <AiFillHeart color="red" onClick={manejarFavorito} className="favorito"/> :  <AiOutlineHeart  onClick={manejarFavorito} className="favorito"/> }
         </div>
 
     </div>

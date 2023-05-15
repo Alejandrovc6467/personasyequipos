@@ -1,7 +1,7 @@
 
 .formulario{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     margin:  80px 10px;
 }
 
@@ -13,6 +13,7 @@
     box-shadow: 7px 7px 15px rgba(0, 0, 0, 25%);
     border-radius: 20px;
     padding: 8px 100px;
+    margin-bottom: 50px;
 }
 
 .formulario h2{
@@ -27,5 +28,12 @@
     .formulario form{
         max-width: 97%;
         padding: 8px 20px;
+    } 
+}
+
+@media all and (max-width:1550px){
+    .formulario{
+        flex-direction: column;
+        align-items: center;
     }
 }

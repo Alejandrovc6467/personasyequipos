@@ -31,7 +31,7 @@ const Equipo = ( props) => {
             <div className="colaboradores">
                 
                 {//recordar que el map siempre debe de ir con su atributo key unico, por eso en este caso utilize el index del mismo map
-                    props.colaboradores.map((colaborador, index) => <Colaborador datos={colaborador} key={index}  colorPrimario={colorPrimario}  eliminarColaborador={props.eliminarColaborador}/>)
+                    props.colaboradores.map((colaborador, index) => <Colaborador datos={colaborador} key={index}  colorPrimario={colorPrimario}  eliminarColaborador={props.eliminarColaborador}  actualizarFavorito={props.actualizarFavorito}/>)
                 }
                 
             </div>

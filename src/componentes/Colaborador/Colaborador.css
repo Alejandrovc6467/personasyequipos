@@ -1,14 +1,14 @@
 .colaborador {
     width: 280px;
     margin-bottom: 24px;
-    position: relative;/**/
+    position: relative;/* necesario para posicionar la imagen de la equis donde deseo*/
 }
 
 .colaborador .encabezado {
     border-radius: 10px 10px 0px 0px;
 }
 .colaborador img {
-    width: 100px;
+    width: 150px;
     border-radius: 50%;
     position: relative;
     bottom: -50px;
@@ -42,10 +42,30 @@
 }
 
 .eliminar{
+     /*gracias al absolute puedo posicionar al input donde yo quiera con los top y rigth sin que los demas componentes del div y de toda la pagina en general  se muevan
+    es como si el absolute hiciera independiente al input de los demas componetes, tiene liberta de movimiento por todo el espcio*/
     position: absolute;/**/
-    right: -15px;
+     /*Recordar que esto solo funciona si el contenedor padre(colaborador) dondde se encuentra el componente hijo (la imagen) tiene un (  position: relative;) justamente como lo tiene la clase colaborador arriba*/
+
+    right: -8px;
     top: -15px;
-    color: rgb(127, 127, 127);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    width: 25px;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.559));
+}
+
+.eliminar:hover{
+    color: rgb(255, 0, 0);
+}
+
+
+
+
+.favorito{
+    cursor: pointer;
+    margin-top: 25px;
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.559));
 }
 
 

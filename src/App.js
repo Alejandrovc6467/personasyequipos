@@ -18,12 +18,12 @@ function App() {
   const [formulario, setFormulario] = useState(false)
   const [colaboradores, setColaboradores] = useState([
 
-    {id: uuid(), equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
-    {id: uuid(), equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
-    {id: uuid(), equipo:"Programación", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
-    {id: uuid(), equipo:"Movil", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
-    {id: uuid(), equipo:"UX y Diseño", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"},
-    {id: uuid(), equipo:"Devops", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor"}
+    {id: uuid(), equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:true},
+    {id: uuid(), equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:false},
+    {id: uuid(), equipo:"Programación", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:true},
+    {id: uuid(), equipo:"Movil", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:false},
+    {id: uuid(), equipo:"UX y Diseño", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:true},
+    {id: uuid(), equipo:"Devops", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:true}
   ])//agregue varios quemados
   // este array de colaboradores se lo envio a mi componente Equipos
 
@@ -104,6 +104,15 @@ function App() {
     setColaboradores(nuevosColaboradores)
   }
 
+  const registrarEquipo = (equipo) =>{
+    //este metodo lo paso por props a mi formulario y el lo llama y le pasa todos los datos a mi por el parametro que recibe este metodo, entonces aqui tengo toda la informacion e=necesaria para crear mi targeta de colaborador
+    console.log("Nuevo equipo", equipo)
+
+    // hago una co[ia de los equipos , le paso equipo nuevo pero antes tambien le hago una copia para agregarle id unico por eso son esos tres puntos ... eso sigifica copia
+    setEquipos([...equipos, {...equipo, id: uuid()}])
+  }
+  
+
   const actualizarColorEquipo = (color, id) => {
     //esta funcion la paso por props hasta el componente equipo y la llamo ahi y le paso el color y el equipo y asi modifico los valores del array
 
@@ -122,6 +131,20 @@ function App() {
   
   }
   
+
+  const actualizarFavorito = (id) =>{
+    
+    //recorro el array equipos y por cada equipo pregunto si el titulo es igual y entonces lo cambio
+    const colaboradoresActualizados = colaboradores.map((colaborador) =>{
+      if(colaborador.id === id){
+        colaborador.favorito = !colaborador.favorito // lo setteo  el booleano con el valor opuesto 
+      }
+      return colaborador
+    })
+
+    setColaboradores(colaboradoresActualizados)
+
+  }
   
 
   
@@ -133,12 +156,14 @@ function App() {
   return (
     <div>
       <Header/>
-      {formulario ?  <Formulario equipos={equipos.map((equipo)=> equipo.titulo)}  registrarColaborador={registrarColaborador}/> : <></>}
+      {formulario ?  <Formulario equipos={equipos.map((equipo)=> equipo.titulo)}  registrarColaborador={registrarColaborador} registrarEquipo={registrarEquipo}/> : <></>}
       <MiOrganizacion switchFormulario={switchFormulario}/>
-      {equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} eliminarColaborador={eliminarColaborador} actualizarColorEquipo={actualizarColorEquipo} />)}  {/**aqui creo todos los componentes en base al array de equipos que cree arriba y lo rrecorro con un map y ademas le paso el array de colaboradores pero con un filtro donde solo se pasen los pertenecientes a cada equipo gracias al array de equipos.titulo, el key utilize el id unico que genero con la libreria que improte(mentira uso el titulo) pude haberlo hecho poniendole un index mas como parametro al map  */}
+      {equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} eliminarColaborador={eliminarColaborador} actualizarColorEquipo={actualizarColorEquipo}  actualizarFavorito={actualizarFavorito} />)}  {/**aqui creo todos los componentes en base al array de equipos que cree arriba y lo rrecorro con un map y ademas le paso el array de colaboradores pero con un filtro donde solo se pasen los pertenecientes a cada equipo gracias al array de equipos.titulo, el key utilize el id unico que genero con la libreria que improte(mentira uso el titulo) pude haberlo hecho poniendole un index mas como parametro al map  */}
       <Footer/>
     </div>
   );
+
+
 }
 
 
