@@ -18,12 +18,12 @@ function App() {
   const [formulario, setFormulario] = useState(false)
   const [colaboradores, setColaboradores] = useState([
 
-    {id: uuid(), equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:true},
-    {id: uuid(), equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:false},
-    {id: uuid(), equipo:"Programación", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:true},
-    {id: uuid(), equipo:"Movil", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:false},
-    {id: uuid(), equipo:"UX y Diseño", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:true},
-    {id: uuid(), equipo:"Devops", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro", puesto:"Instructor", favorito:true}
+    {id: uuid(), equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro Vasquez", puesto:"Desarrollador de software", favorito:true},
+    {id: uuid(), equipo:"Front End", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro Vasquez", puesto:"Desarrollador de software", favorito:false},
+    {id: uuid(), equipo:"Programación", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro Vasquez", puesto:"Desarrollador de software", favorito:true},
+    {id: uuid(), equipo:"Movil", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro Vasquez", puesto:"Desarrollador de software", favorito:false},
+    {id: uuid(), equipo:"UX y Diseño", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro Vasquez", puesto:"Desarrollador de software", favorito:true},
+    {id: uuid(), equipo:"Devops", foto:"https://github.com/Alejandrovc6467.png", nombre:"Alejandro Vasquez", puesto:"Desarrollador de software", favorito:true}
   ])//agregue varios quemados
   // este array de colaboradores se lo envio a mi componente Equipos
 

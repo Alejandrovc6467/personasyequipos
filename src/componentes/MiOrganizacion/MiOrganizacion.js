@@ -12,7 +12,7 @@ const MiOrganizacion = (props) => {
     }
 
     return <section className="orgSection">
-        <h3 className="title">Mi ya tu sabe Organización</h3>
+        <h3 className="title">Mi Organización</h3>
         <img src="img/botonAdd.png" alt="add image" onClick={props.switchFormulario} />
     </section>
 }
